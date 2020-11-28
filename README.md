@@ -5,9 +5,9 @@
 ## To Do:
 
 - [ ] Check MPC implementation of pybullet, and the simulation bed configuration.
-- [ ] Import mini cheetah in the place of Laikago and do the requied system indentification.
+- [ ] Import Mini Cheetah in the place of Laikago, do the requied system indentification and test the MPC controller.
 - [ ] Clean and develop the simulation bed into a gym env with approproate functions and classes.
-- [ ] Build a independent Domain Randomizer class, and related functions to work hand in hand with the env.
+- [ ] Build a independent Domain Randomizer class, to work hand in hand with the env.
 - [ ] Integrate, test and verify env with Stable baselines debuging tools.
 - [ ] Make it a gym package.
 - [ ] Add functions for capturing image as the observation.
@@ -29,4 +29,4 @@
 3. [SlopedTerrainLinearPolicy(for DR)](https://github.com/StochLab/SlopedTerrainLinearPolicy)
 4. [Sim-to-Real: Learning Agile Locomotion For Quadruped Robots(DR implementations of minatour)](https://github.com/bulletphysics/bullet3/tree/master/examples/pybullet/gym/pybullet_envs/minitaur/envs)
 5. [Active Domain Randomization](https://paperswithcode.com/paper/active-domain-randomization)
-6. (to add vision based domain randomization in future.)
+
