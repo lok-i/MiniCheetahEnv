@@ -3,12 +3,12 @@ import numpy as np
 
 URDF_NAME = "laikago/laikago_toes_zup.urdf"
 URDF_NAME = "mini_cheetah/mini_cheetah.urdf"
-START_POS = [0, 0, 0.34]
+START_POS = [0, 0, 0.28]
 
 # need to verify
 MPC_BODY_MASS = 88.52/9.8
 MPC_BODY_INERTIA = (0.014335543314877155, 0, 0, 0, 0.02479468733710349, 0, 0, 0, 0.03312409333012104)
-MPC_BODY_HEIGHT = 0.3
+MPC_BODY_HEIGHT = 0.28
 MPC_VELOCITY_MULTIPLIER = 0.5
 
 

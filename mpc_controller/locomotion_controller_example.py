@@ -88,13 +88,8 @@ def _generate_example_linear_angular_speed(t):
   wz = 0.8 * robot_sim.MPC_VELOCITY_MULTIPLIER
   
   time_points = (0, 5, 10, 15, 20, 25,30)
-  speed_points = ((vx, 0, 0, 0), 
-                  (vx, 0, 0, 0), 
-                  (vx, 0, 0, 0), 
-                  (vx, 0, 0, 0), 
-                  (vx, 0, 0, 0),
-                  (vx, 0, 0, 0), 
-                  (vx, 0, 0, 0))
+  speed_points = ((0, 0, 0, 0), (0, 0, 0, wz), (vx, 0, 0, 0), (0, 0, 0, -wz), (0, -vy, 0, 0),
+                  (0, 0, 0, 0), (0, 0, 0, wz))
 
   speed = scipy.interpolate.interp1d(
       time_points,
@@ -232,8 +227,7 @@ def _run_example(max_time=_MAX_TIME_SECONDS):
   #  p.stepSimulation()
   #  time.sleep(1./240)  
   current_time = robot.GetTimeSinceReset()
-  #logId = p.startStateLogging(p.STATE_LOGGING_PROFILE_TIMINGS, "mpc.json")
-  
+  # logId = pybullet.startStateLogging(pybullet.STATE_LOGGING_VIDEO_MP4,"./media/MiniCheetah_MPC.mp4")
   while current_time < max_time:
     #pos,orn = p.getBasePositionAndOrientation(robot_uid)
     #print("pos=",pos, " orn=",orn)
@@ -256,7 +250,7 @@ def _run_example(max_time=_MAX_TIME_SECONDS):
     time.sleep(0.003)
     current_time = robot.GetTimeSinceReset()
     p.submitProfileTiming()
-  #p.stopStateLogging(logId)
+  #pybullet.stopStateLogging(logId)
   #while p.isConnected():
   #  time.sleep(0.1)
 
