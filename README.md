@@ -4,8 +4,8 @@
 
 ## To Do:
 
-- [ ] Check MPC implementation of pybullet, and the simulation bed configuration.
-- [ ] Import Mini Cheetah in the place of Laikago, do the requied system indentification and test the MPC controller.
+- [x] Check MPC implementation of pybullet, and the simulation bed configuration.
+- [x] Import Mini Cheetah in the place of Laikago, do the requied system indentification and test the MPC controller.
 - [ ] Clean and develop the simulation bed into a gym env with approproate functions and classes.
 - [ ] Build a independent Domain Randomizer class, to work hand in hand with the env.
 - [ ] Integrate, test and verify env with Stable baselines debuging tools.
