@@ -14,6 +14,19 @@
 - [ ] Add DR for the images aswell (if required).
 - [ ] Add multi threading / make vectorized env for paralelized training.
 
+## MPC controller
+
+### Installtion:
+* Install the motion_imitation repository and all the requirements as per the instructions given [here](https://github.com/google-research/motion_imitation).
+* Replace the existing "mpc_controller" folder with the folder in this repository.
+
+### Run:
+* To run the mini cheetah mpc controller(untuned) demo,
+
+      cd mpc_controller
+      python locomotion_controller_example.py
+
+
 
 ## References
 
