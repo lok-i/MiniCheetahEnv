@@ -33,12 +33,13 @@ The overall strucutre of the env package is listed below. The primary functions 
 Navigate to the mini_cheetah_env.py and run it as there is a example main() written for verification.
 
          cd MiniCheetahEnv/gym-MiniCheetahEnv/gym_MiniCheetahEnv/envs/
+ 
          python3 mini_cheetah_env.py
 
 
 ## Observation Space
 
-The functions for capturing RGB-D images from a First Person Perspective of the robot has also been implemented. The images are displayed towards the left of the following gif.**Apart from this functions for capturing the imu data, robot and joint states is also available** 
+The functions for capturing RGB-D images from a First Person Perspective of the robot has also been implemented. The images are displayed towards the left of the following gif.**Apart from this functions for capturing the imu data, robot and joint states is also available** [check in mini_cheetah_class.py](https://github.com/lok-i/MiniCheetahEnv/blob/main/gym-MiniCheetahEnv/gym_MiniCheetahEnv/envs/src/mini_cheetah_class.py)
 
 <p align="center">
    <img width="500" height="250" src="https://github.com/lok-i/MiniCheetahEnv/blob/main/gym-MiniCheetahEnv/media/FPVCam.gif">
@@ -46,7 +47,7 @@ The functions for capturing RGB-D images from a First Person Perspective of the 
 
 ## Action space:
 
-Currently the action space is the unormalized, raw joint torques. However, it would be changed to the commands of a low level controller in future as per the MDP formulation.
+Currently the action space is the unormalized, raw joint torques. However, it would be changed to the commands of a low level controller in future as per the MDP formulation.[check in mini_cheeta_env.py](https://github.com/lok-i/MiniCheetahEnv/blob/main/gym-MiniCheetahEnv/gym_MiniCheetahEnv/envs/mini_cheetah_env.py)
 
 <p align="center">
    <img width="300" height="250" src="https://github.com/lok-i/MiniCheetahEnv/blob/main/gym-MiniCheetahEnv/media/TrajTrack.gif">
@@ -57,7 +58,7 @@ Currently the action space is the unormalized, raw joint torques. However, it wo
 
 ## Additional Terrains:
 
-Since we are targeting locomotion on discontinuous terrains, I have added other types of terrains which could be easily selected while initializing the env.
+Since we are targeting locomotion on discontinuous terrains, I have added other types of terrains which could be easily selected while initializing the env.[check in world.py](https://github.com/lok-i/MiniCheetahEnv/blob/main/gym-MiniCheetahEnv/gym_MiniCheetahEnv/envs/src/world.py)
 
 ### Stair Case:
 
