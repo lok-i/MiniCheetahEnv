@@ -8,6 +8,7 @@ import time
 import pybullet
 import pybullet_data
 from mini_cheetah_class import mini_cheetah
+from dynamics_randomization import DynamicsRandomizer
 
 class Terrain():
     
@@ -35,9 +36,23 @@ class Terrain():
         pybullet.setTimeStep(self.dt/self._frame_skip)
         pybullet.setGravity(0, 0, -9.8)
 
-        if(terrain_type == 'plane'):
+        # Load Terrain
+        if(terrain_type == 'plane' or terrain_type == 'stairs'):
             self.plane = pybullet.loadURDF("%s/plane.urdf" % pybullet_data.getDataPath())
             pybullet.changeVisualShape(self.plane,-1,rgbaColor=[1,1,1,0.9])
+            if(terrain_type=='stairs'):
+                boxHalfLength = 0.1
+                boxHalfWidth = 1
+                boxHalfHeight = 0.05
+                sh_colBox = pybullet.createCollisionShape(pybullet.GEOM_BOX,halfExtents=[boxHalfLength,boxHalfWidth,boxHalfHeight])
+                boxOrigin = 1
+                n_steps = 15
+                self.stairs = []
+                for i in range(n_steps):
+                    step =pybullet.createMultiBody(baseMass=0,baseCollisionShapeIndex = sh_colBox,basePosition = [boxOrigin + i*2*boxHalfLength,0,boxHalfHeight + i*2*boxHalfHeight],baseOrientation=[0.0,0.0,0.0,1])
+                    self.stairs.append(step)
+                    pybullet.changeDynamics(step, -1, lateralFriction=0.8)
+
 
         elif(terrain_type == 'distorted'):
             numHeightfieldRows = 256
@@ -58,6 +73,7 @@ class Terrain():
 
         #Load Robot
         self.Mini_Cheetah = mini_cheetah(pybullet)
+        self.DynaRandom = DynamicsRandomizer(pybullet,self.Mini_Cheetah)
 
         #Set Camera
         self._cam_dist = 1.0
@@ -75,16 +91,21 @@ class Terrain():
 
     
     def _reset(self):
-        
-        pass
+
+        # reset robot
+        self.Mini_Cheetah._reset_base()
+        self.Mini_Cheetah._reset_legs()
+
+        # reset any disturbances in the terrain also (eg. obstacles)
     
     def _vis_foot_traj(self):
         pass
 	
 
 if __name__ == "__main__":
-    t = Terrain(on_rack=False,terrain_type='plane')
+    t = Terrain(on_rack=False,terrain_type='stairs')
 
+    t._reset()
     while True:
         t._simulate()
         time.sleep(t.dt)
