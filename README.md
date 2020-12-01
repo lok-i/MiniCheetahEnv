@@ -11,9 +11,10 @@
 - [x] Integrate, test and verify env.
 - [ ] Make it a gym package.
 - [x] Add functions for capturing image as the observation.
+- [ ] Implement utils and logger files for performace tracking and comparison .
 - [ ] Add DR for the images aswell (if required).
 - [ ] Add multi threading / make vectorized env for paralelized training.
-
+- [ ] Add stable baselines support for training.
 ## MPC controller
 
 ### Installtion:
