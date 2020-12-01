@@ -4,25 +4,29 @@
 
 ## ENV package structure
 
-         ├── gym_MiniCheetahEnv
-         │   └── envs
-         │       ├── mini_cheetah_env.py  # main env file
-         │       ├── rsc      # resource folder with URDF
-         │       │   └── mini_cheetah
-         │       │       ├── meshes
-         │       │       │   ├── mini_abad.obj
-         │       │       │   ├── mini_body.obj
-         │       │       │   ├── mini_lower_link.obj
-         │       │       │   └── mini_upper_link.obj
-         │       │       ├── mini_cheetah_transp.urdf
-         │       │       └── mini_cheetah.urdf
-         │       └── src      # Source code folder
-         │           ├── dynamics_randomization.py    # Dynamics Randomizer Class
-         │           ├── mini_cheetah_class.py  # Mini Cheetah Robot model, parameters and functions
-         │           └── world.py   # Main Simulation class with terraain paramters,setting and functions
-         ├── media
-         └── README.md
 
+         ├── gym_MiniCheetahEnv
+         │   ├── envs
+         │   │   ├── __init__.py
+         │   │   ├── mini_cheetah_env.py     # the main env file
+         │   │   ├── rsc      # resource folder with URDF
+         │   │   │   └── mini_cheetah
+         │   │   │       ├── meshes
+         │   │   │       │   ├── mini_abad.obj
+         │   │   │       │   ├── mini_body.obj
+         │   │   │       │   ├── mini_lower_link.obj
+         │   │   │       │   └── mini_upper_link.obj
+         │   │   │       ├── mini_cheetah_transp.urdf
+         │   │   │       └── mini_cheetah.urdf # the URDF that is in use
+         │   │   └── src
+         │   │       ├── dynamics_randomization.py    # the dynamics Randomizer Class
+         │   │       ├── mini_cheetah_class.py  # the mini cheetah robot model, parameters and functions
+         │   │       ├── scrap.py   
+         │   │       └── world.py   # the main simulation class with terraain paramters,pybullet setting and functions
+         │   └── __init__.py
+         ├── media
+         ├── README.md
+         └── setup.py
 
 
 
@@ -36,9 +40,9 @@
 ## Verified Action space:
 
 <p align="center">
-   <img width="500" height="250" src="https://github.com/lok-i/MiniCheetahEnv/blob/main/gym-MiniCheetahEnv/media/TrajTrack.gif">
+   <img width="300" height="250" src="https://github.com/lok-i/MiniCheetahEnv/blob/main/gym-MiniCheetahEnv/media/TrajTrack.gif">
 
-   <img width="500" height="250" src="https://github.com/lok-i/MiniCheetahEnv/blob/main/gym-MiniCheetahEnv/media/RandomAction.gif">
+   <img width="300" height="250" src="https://github.com/lok-i/MiniCheetahEnv/blob/main/gym-MiniCheetahEnv/media/RandomAction.gif">
 
 </p>
 
