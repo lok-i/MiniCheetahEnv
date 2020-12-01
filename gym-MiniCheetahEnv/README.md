@@ -4,6 +4,7 @@
 
 ## ENV package structure
 
+The overall strucutre of the env package is listed below. The primary functions and classes governing the robot model and simulation are completed. Since the MDP is not yet formulated the main env file is yet to be completed, however the structure is done.
 
          ├── gym_MiniCheetahEnv
          │   ├── envs
@@ -28,27 +29,35 @@
          ├── README.md
          └── setup.py
 
+## For running a random action in the environment
+Navigate to the mini_cheetah_env.py and run it as there is a example main() written for verification.
+
+         cd MiniCheetahEnv/gym-MiniCheetahEnv/gym_MiniCheetahEnv/envs/
+         python3 mini_cheetah_env.py
 
 
+## Observation Space
 
-## FPV Camera (as Observation)
+The functions for capturing RGB-D images from a First Person Perspective of the robot has also been implemented. The images are displayed towards the left of the following gif.**Apart from this functions for capturing the imu data, robot and joint states is also available** 
 
 <p align="center">
    <img width="500" height="250" src="https://github.com/lok-i/MiniCheetahEnv/blob/main/gym-MiniCheetahEnv/media/FPVCam.gif">
 </p>
 
-## Verified Action space:
+## Action space:
+
+Currently the action space is the unormalized, raw joint torques. However, it would be changed to the commands of a low level controller in future as per the MDP formulation.
 
 <p align="center">
    <img width="300" height="250" src="https://github.com/lok-i/MiniCheetahEnv/blob/main/gym-MiniCheetahEnv/media/TrajTrack.gif">
-
    <img width="300" height="250" src="https://github.com/lok-i/MiniCheetahEnv/blob/main/gym-MiniCheetahEnv/media/RandomAction.gif">
-
+   <i>Tracking a hand coded trajectory(Left), Random actions sampled from the action space(Right)</i><br>
 </p>
 
 
-
 ## Additional Terrains:
+
+Since we are targeting locomotion on discontinuous terrains, I have added other types of terrain which could be selected while initializing the env.
 
 ### Stair Case:
 
