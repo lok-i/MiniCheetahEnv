@@ -4,8 +4,8 @@ from gym import spaces
 import math
 import random
 import time
-import pybullet
-import pybullet_data
+from src.world import Terrain
+
 
 
 class MiniCheetahEnv(gym.Env):
@@ -20,13 +20,23 @@ class MiniCheetahEnv(gym.Env):
 		observation_low = -observation_high
 		self.observation_space = spaces.Box(observation_low, observation_high)
 
-		pass
+		self.World = Terrain()
+
 	def step(self):
 		pass
 	def reset(self):
-		pass
+		# send back initial state
+		self.World._reset_world()
+
 	def _caclulate_reward(self):
 		pass
+
+if __name__ == "__main__":
+	env = MiniCheetahEnv()
+
+	while True:
+		env.World._simulate()
+		time.sleep(env.World.dt)
 
 	
 		

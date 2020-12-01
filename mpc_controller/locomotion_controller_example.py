@@ -240,7 +240,7 @@ def _run_example(max_time=_MAX_TIME_SECONDS):
     
     # Updates the controller behavior parameters.
     lin_speed, ang_speed = _generate_example_linear_angular_speed(current_time)
-    print("lin_vel:",lin_speed,"Ang_command",ang_speed)
+    #print("lin_vel:",lin_speed,"Ang_command",ang_speed)
     #lin_speed, ang_speed = (0., 0., 0.), 0.
     _update_controller_params(controller, lin_speed, ang_speed)
 
@@ -248,8 +248,8 @@ def _run_example(max_time=_MAX_TIME_SECONDS):
     controller.update()
     hybrid_action, info = controller.get_action()
 
-    torque_profile.append(hybrid_action)
-    np.savetxt('test1.csv', np.array(torque_profile), delimiter=',') 
+    # torque_profile.append(hybrid_action)
+
     
     robot.Step(hybrid_action)
     
@@ -258,7 +258,8 @@ def _run_example(max_time=_MAX_TIME_SECONDS):
     time.sleep(0.003)
     current_time = robot.GetTimeSinceReset()
     p.submitProfileTiming()
-  torque_profile = np.array(torque_profile)
+ 
+  np.savetxt('test1.csv', np.array(torque_profile), delimiter=',') 
     # X is an array
   #pybullet.stopStateLogging(logId)
   #while p.isConnected():

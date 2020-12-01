@@ -21,7 +21,7 @@ class mini_cheetah():
         self._reset_legs()
 
 
-    def _get_base_position(self):
+    def _get_base_pose(self):
         return self.pybullet_client.getBasePositionAndOrientation(self.model)
 
     def _get_base_velocity(self):
@@ -128,7 +128,8 @@ class mini_cheetah():
 
         return motor_angles, motor_velocities
 
-    def _reset_base(self):
-        self.pybullet_client.resetBasePositionAndOrientation(self.model, self._robot_init_pos, self._robot_init_ori)
+    def _reset_base(self, pos = [0,0,0.4],ori =[0,0,0,1]  ):
+        self.pybullet_client.resetBasePositionAndOrientation(self.model, pos,ori )
         self.pybullet_client.resetBaseVelocity(self.model, [0, 0, 0], [0, 0, 0])
 
+    
