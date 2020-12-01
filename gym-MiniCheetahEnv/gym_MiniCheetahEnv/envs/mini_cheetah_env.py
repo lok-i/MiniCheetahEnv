@@ -1,9 +1,6 @@
 import numpy as np
 import gym
 from gym import spaces
-import math
-import random
-import time
 from src.world import Terrain
 
 
@@ -62,12 +59,12 @@ if __name__ == "__main__":
 		episode_returns = 0
 
 		for _ in range(episode_length):
-			#random torque sampled
+			#random torque being sampled
 			torques = env.action_space.sample()
 			state,reward,done,_ =env.step(action=torques)
 			episode_returns += reward
 
-		print("Epidsode Return:",episode_returns)
+		print("Episode Return:",episode_returns)
 
 	
 		

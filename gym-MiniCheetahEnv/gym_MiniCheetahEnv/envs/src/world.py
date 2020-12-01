@@ -2,7 +2,6 @@ import numpy as np
 import gym
 from gym import spaces
 import math
-import csv
 import cv2
 import random
 import time
@@ -16,6 +15,7 @@ from src.dynamics_randomization import DynamicsRandomizer
 class Terrain():
     
     def __init__(self,render = True,on_rack = False, terrain_type = 'plane'):
+        
         self._is_render = render
         self._on_rack = on_rack
 
@@ -86,12 +86,11 @@ class Terrain():
         if self._on_rack:
             self.robot._set_on_rack()
 
-
     def _simulate(self,torques):
         for _ in range(self._frame_skip):
             self.robot._apply_motor_torques(torques)
+            
             pybullet.stepSimulation()
-
     
     def _reset_world(self):
 
@@ -144,16 +143,9 @@ class Terrain():
         # converting to openCV colour space
         rgb_image = cv2.cvtColor(rgb_opengl, cv2.COLOR_BGR2RGB)
         return rgb_image
-	
+    	
 
-if __name__ == "__main__":
-    #To run this locally, remove "src."" from the import of mini_cheetah and Dynamics Randomizer.
-    t = Terrain(on_rack=False,terrain_type='plane')
-    t._reset_world()
 
-    while True:
-        t._get_FPV_image()
-        t._simulate()
-        time.sleep(t.dt)
+
 
 

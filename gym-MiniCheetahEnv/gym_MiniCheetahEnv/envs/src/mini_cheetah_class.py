@@ -1,5 +1,7 @@
 import numpy as np
 import math
+import pybullet
+
 
 class Mini_Cheetah():
     def __init__(self,pybullet_client):
@@ -12,6 +14,7 @@ class Mini_Cheetah():
         self._robot_init_pos =[0,0,0.4]
         self._robot_init_ori = [0, 0, 0, 1]
 
+
         self.model = self.pybullet_client.loadURDF(model_path, self._robot_init_pos,self._robot_init_ori)
 
         self._no_of_links = int(self.pybullet_client.getNumJoints(self.model))        
@@ -20,14 +23,12 @@ class Mini_Cheetah():
         self._joint_name_to_id, self._motor_id_list,self._feet_id_list  = self._build_id_list()
         self._reset_legs()
 
-
     def _get_base_pose(self):
         return self.pybullet_client.getBasePositionAndOrientation(self.model)
 
     def _get_base_velocity(self):
         return self.pybullet_client.getBaseVelocity(self.model)
-        
-    
+           
     def _build_id_list(self):
         num_joints = self.pybullet_client.getNumJoints(self.model)
         joint_name_to_id = {}
@@ -108,9 +109,6 @@ class Mini_Cheetah():
 			controlMode=self.pybullet_client.TORQUE_CONTROL,
 			forces=torques_per_leg[leg])
 
-            
-
-
     def _set_on_rack(self):
         self.pybullet_client.createConstraint(
 				self.model, -1, -1, -1, self.pybullet_client.JOINT_FIXED,
@@ -134,5 +132,4 @@ class Mini_Cheetah():
     def _reset_base(self, pos = [0,0,0.4],ori =[0,0,0,1]  ):
         self.pybullet_client.resetBasePositionAndOrientation(self.model, pos,ori )
         self.pybullet_client.resetBaseVelocity(self.model, [0, 0, 0], [0, 0, 0])
-
-    
+        
