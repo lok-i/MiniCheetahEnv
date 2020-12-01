@@ -51,13 +51,13 @@ Currently the action space is the unormalized, raw joint torques. However, it wo
 <p align="center">
    <img width="300" height="250" src="https://github.com/lok-i/MiniCheetahEnv/blob/main/gym-MiniCheetahEnv/media/TrajTrack.gif">
    <img width="300" height="250" src="https://github.com/lok-i/MiniCheetahEnv/blob/main/gym-MiniCheetahEnv/media/RandomAction.gif">
-   <i>Tracking a hand coded trajectory(Left), Random actions sampled from the action space(Right)</i><br>
+   <br><i>Tracking a hand coded trajectory(Left), Random actions sampled from the action space(Right)</i><br>
 </p>
 
 
 ## Additional Terrains:
 
-Since we are targeting locomotion on discontinuous terrains, I have added other types of terrain which could be selected while initializing the env.
+Since we are targeting locomotion on discontinuous terrains, I have added other types of terrains which could be easily selected while initializing the env.
 
 ### Stair Case:
 
