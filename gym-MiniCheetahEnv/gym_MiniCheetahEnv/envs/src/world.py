@@ -2,6 +2,7 @@ import numpy as np
 import gym
 from gym import spaces
 import math
+import csv
 import random
 import time
 import pybullet
@@ -10,7 +11,7 @@ from mini_cheetah_class import mini_cheetah
 
 class Terrain():
     
-    def __init__(self,render = True,on_rack = False, terrain_type = 'distorted'):
+    def __init__(self,render = True,on_rack = False, terrain_type = 'plane'):
         self._is_render = render
         self._on_rack = on_rack
 
@@ -74,6 +75,7 @@ class Terrain():
 
     
     def _reset(self):
+        
         pass
     
     def _vis_foot_traj(self):
@@ -81,7 +83,10 @@ class Terrain():
 	
 
 if __name__ == "__main__":
-    t = Terrain()
-    while(True):
+    t = Terrain(on_rack=False,terrain_type='plane')
+
+    while True:
         t._simulate()
         time.sleep(t.dt)
+
+

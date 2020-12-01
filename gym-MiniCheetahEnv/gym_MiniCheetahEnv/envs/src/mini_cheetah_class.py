@@ -9,9 +9,11 @@ class mini_cheetah():
         self.leg_tags = ['_fr_','_fl_','_hl_','_hr_']        
         self._robot_init_pos =[0,0,0.4]
         self._robot_init_ori = [0, 0, 0, 1]
-        self.prev_feet_points = np.ndarray((5,3))        
-        
+        self.prev_feet_points = np.ndarray((5,3))
+
         self.robot = self.pybullet_client.loadURDF(model_path, self._robot_init_pos,self._robot_init_ori)
+        self._no_of_links = self.pybullet_client.getNumJoints(self.robot)        
+
         self.pybullet_client.resetBasePositionAndOrientation(self.robot, self._robot_init_pos, self._robot_init_ori)
         self.pybullet_client.resetBaseVelocity(self.robot, [0, 0, 0], [0, 0, 0])
         self._joint_name_to_id, self._motor_id_list  = self._build_motor_id_list()
@@ -23,8 +25,7 @@ class mini_cheetah():
 
     def _get_base_velocity(self):
         return self.pybullet_client.getBaseVelocity(self.robot)
-    
-    
+        
     
     def _build_motor_id_list(self):
         num_joints = self.pybullet_client.getNumJoints(self.robot)
@@ -55,7 +56,7 @@ class mini_cheetah():
 
         return joint_name_to_id, motor_id_list
 
-    def _reset_legs(self,standstilltorque=10):       
+    def _reset_legs(self,standstilltorque=100):       
 
         for leg in self.leg_tags:
 
@@ -86,10 +87,10 @@ class mini_cheetah():
 			forces=[standstilltorque]*3)
 
     def _apply_motor_torques(self,torques):
-        torques_per_leg = {self.leg_tags[0],torques[0:3],
-                           self.leg_tags[1],torques[3:6],
-                           self.leg_tags[2],torques[6:9],
-                           self.leg_tags[3],torques[9:12]}
+        torques_per_leg = {self.leg_tags[0]:torques[0:3],
+                           self.leg_tags[1]:torques[3:6],
+                           self.leg_tags[2]:torques[6:9],
+                           self.leg_tags[3]:torques[9:12]}
 
         for leg in self.leg_tags:
             self.pybullet_client.setJointMotorControlArray(
@@ -105,3 +106,24 @@ class mini_cheetah():
         self.pybullet_client.createConstraint(
 				self.robot, -1, -1, -1, self.pybullet_client.JOINT_FIXED,
 				[0, 0, 0], [0, 0, 0], [0, 0, 0.5])
+        self._reset_legs()
+    
+    def _get_motor_states(self):
+        motor_angles = []
+        motor_velocities = []
+        for leg in self.leg_tags:
+            leg_state = self.pybullet_client.getJointStates(bodyUniqueId=self.robot,
+                                               jointIndices=[self._joint_name_to_id['torso_to_abduct'+leg+'j'],
+                                                        self._joint_name_to_id['abduct'+leg+'to_thigh'+leg+'j'],
+                                                        self._joint_name_to_id['thigh'+leg+'to_knee'+leg+'j']])
+            for joint_state in leg_state:
+                motor_angles.append(joint_state[0])
+                motor_velocities.append(joint_state[1])
+
+        return motor_angles, motor_velocities
+
+
+
+
+
+

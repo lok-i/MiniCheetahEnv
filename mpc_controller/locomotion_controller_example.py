@@ -14,6 +14,7 @@ from absl import app
 from absl import flags
 import scipy.interpolate
 import numpy as np
+import csv
 import pybullet_data as pd
 from pybullet_utils import bullet_client
 
@@ -228,6 +229,10 @@ def _run_example(max_time=_MAX_TIME_SECONDS):
   #  time.sleep(1./240)  
   current_time = robot.GetTimeSinceReset()
   # logId = pybullet.startStateLogging(pybullet.STATE_LOGGING_VIDEO_MP4,"./media/MiniCheetah_MPC.mp4")
+  
+  
+  torque_profile = []
+
   while current_time < max_time:
     #pos,orn = p.getBasePositionAndOrientation(robot_uid)
     #print("pos=",pos, " orn=",orn)
@@ -242,6 +247,9 @@ def _run_example(max_time=_MAX_TIME_SECONDS):
     # Needed before every call to get_action().
     controller.update()
     hybrid_action, info = controller.get_action()
+
+    torque_profile.append(hybrid_action)
+    np.savetxt('test1.csv', np.array(torque_profile), delimiter=',') 
     
     robot.Step(hybrid_action)
     
@@ -250,6 +258,8 @@ def _run_example(max_time=_MAX_TIME_SECONDS):
     time.sleep(0.003)
     current_time = robot.GetTimeSinceReset()
     p.submitProfileTiming()
+  torque_profile = np.array(torque_profile)
+    # X is an array
   #pybullet.stopStateLogging(logId)
   #while p.isConnected():
   #  time.sleep(0.1)
