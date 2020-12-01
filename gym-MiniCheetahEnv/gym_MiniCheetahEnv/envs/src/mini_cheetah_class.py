@@ -1,7 +1,7 @@
 import numpy as np
 import math
 
-class mini_cheetah():
+class Mini_Cheetah():
     def __init__(self,pybullet_client):
         self.pybullet_client = pybullet_client
 
@@ -107,6 +107,9 @@ class mini_cheetah():
                          ],
 			controlMode=self.pybullet_client.TORQUE_CONTROL,
 			forces=torques_per_leg[leg])
+
+            
+
 
     def _set_on_rack(self):
         self.pybullet_client.createConstraint(

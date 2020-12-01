@@ -8,11 +8,10 @@ import random
 import time
 import pybullet
 import pybullet_data
-# from src.mini_cheetah_class import mini_cheetah
-# from src.dynamics_randomization import DynamicsRandomizer
+from src.mini_cheetah_class import Mini_Cheetah
+from src.dynamics_randomization import DynamicsRandomizer
 
-from mini_cheetah_class import mini_cheetah
-from dynamics_randomization import DynamicsRandomizer
+
 
 class Terrain():
     
@@ -75,7 +74,7 @@ class Terrain():
 
 
         #Load Robot
-        self.robot = mini_cheetah(pybullet)
+        self.robot = Mini_Cheetah(pybullet)
         self.DynaRandom = DynamicsRandomizer(pybullet,self.robot)
 
         #Set Camera
@@ -88,19 +87,27 @@ class Terrain():
             self.robot._set_on_rack()
 
 
-    def _simulate(self):
+    def _simulate(self,torques):
         for _ in range(self._frame_skip):
+            self.robot._apply_motor_torques(torques)
             pybullet.stepSimulation()
 
     
     def _reset_world(self):
 
-        # reset robot
+        # reset the robot
         self.robot._reset_base()
         self.robot._reset_legs()
 
         # reset any disturbances in the terrain also (eg. obstacles)
         pass
+
+    def _get_observation(self):
+        FPV_image = self._get_FPV_image()
+        _,base_orientation = self.robot._get_base_pose()
+        motor_angles, motor_velocities = self.robot._get_motor_states()
+        # flatten the observation and return accordingly
+        return FPV_image
 
     def _get_FPV_image(self):
 
@@ -140,8 +147,7 @@ class Terrain():
 	
 
 if __name__ == "__main__":
-
-    # To run this, remove src. the import of mini_cheetah and Dynamics Randomizer.
+    #To run this locally, remove "src."" from the import of mini_cheetah and Dynamics Randomizer.
     t = Terrain(on_rack=False,terrain_type='plane')
     t._reset_world()
 
