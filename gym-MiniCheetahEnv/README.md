@@ -2,7 +2,7 @@
 -  a pybullet-gym environment for Mini Cheetah
 
 
-## ENV package structure
+## ENV package structure:
 
 The overall structure of the env package is shown below. The primary functions and classes governing the robot model and simulation are completed. Since the MDP is not yet formulated the main env file is yet to be completed, however the structure is done.
 
@@ -29,7 +29,7 @@ The overall structure of the env package is shown below. The primary functions a
          ├── README.md
          └── setup.py
 
-## For running a random action in the environment
+## For running a random action in the environment:
 Navigate to the mini_cheetah_env.py and run it as there is a example main() written for verification.
 
          cd MiniCheetahEnv/gym-MiniCheetahEnv/gym_MiniCheetahEnv/envs/
@@ -37,7 +37,7 @@ Navigate to the mini_cheetah_env.py and run it as there is a example main() writ
          python3 mini_cheetah_env.py
 
 
-## Observation Space
+## Observation Space:
 
 The functions for capturing RGB-D images from a First Person Perspective of the robot has also been implemented. The images are displayed towards the left of the following gif.**Apart from this functions for capturing the imu data, robot and joint states are also available**. [check in mini_cheetah_class.py](https://github.com/lok-i/MiniCheetahEnv/blob/main/gym-MiniCheetahEnv/gym_MiniCheetahEnv/envs/src/mini_cheetah_class.py)
 
