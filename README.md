@@ -9,8 +9,8 @@
 - [x] Clean and develop the simulation bed into a gym env with approproate functions and classes.
 - [x] Build a independent Domain Randomizer class, to work hand in hand with the env.
 - [x] Integrate, test and verify env.
-- [ ] Make it a gym package.
 - [x] Add functions for capturing image as the observation.
+- [ ] Make it a gym package.
 - [ ] Implement utils and logger files for performace tracking and comparison .
 - [ ] Add DR for the images aswell (if required).
 - [ ] Add multi threading / make vectorized env for paralelized training.
