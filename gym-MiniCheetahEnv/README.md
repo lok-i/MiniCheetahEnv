@@ -25,7 +25,7 @@
 ## FPV Camera
 
 <p align="center">
-   <img width="300" height="250" src="https://github.com/lok-i/MiniCheetahEnv/blob/main/gym-MiniCheetahEnv/media/FPVCam.gif">
+   <img width="400" height="250" src="https://github.com/lok-i/MiniCheetahEnv/blob/main/gym-MiniCheetahEnv/media/FPVCam.gif">
 </p>
 
 
@@ -34,14 +34,14 @@
 ### Stair Case:
 
 <p align="center">
-   <img width="300" height="250" src="https://github.com/lok-i/MiniCheetahEnv/blob/main/gym-MiniCheetahEnv/media/Stairs.png">
-   <img width="300" height="250" src="https://github.com/lok-i/MiniCheetahEnv/blob/main/gym-MiniCheetahEnv/media/Stairs2.png">
+   <img width="300" height="220" src="https://github.com/lok-i/MiniCheetahEnv/blob/main/gym-MiniCheetahEnv/media/Stairs.png">
+   <img width="300" height="220" src="https://github.com/lok-i/MiniCheetahEnv/blob/main/gym-MiniCheetahEnv/media/Stairs2.png">
 </p>
 
 ### Rugged Terrain:
 
 <p align="center">
-   <img width="300" height="250" src="https://github.com/lok-i/MiniCheetahEnv/blob/main/gym-MiniCheetahEnv/media/RoughTerrain.png">
-   <img width="300" height="250" src="https://github.com/lok-i/MiniCheetahEnv/blob/main/gym-MiniCheetahEnv/media/RoughTerrain2.png">
+   <img width="300" height="220" src="https://github.com/lok-i/MiniCheetahEnv/blob/main/gym-MiniCheetahEnv/media/RoughTerrain.png">
+   <img width="300" height="220" src="https://github.com/lok-i/MiniCheetahEnv/blob/main/gym-MiniCheetahEnv/media/RoughTerrain2.png">
 </p>
 
